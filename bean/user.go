@@ -1,8 +1,8 @@
 package bean
 
 type User struct {
-	Id int
+	Id       int
 	Username string
 	Password string
-	Flag int8
+	Flag     int8
 }

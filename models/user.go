@@ -1,10 +1,10 @@
 package models
 
 import (
-	"github.com/astaxie/beego/orm"
 	"apiproject/bean"
-	"github.com/pkg/errors"
 	"fmt"
+	"github.com/astaxie/beego/orm"
+	"github.com/pkg/errors"
 )
 
 var (
@@ -12,7 +12,7 @@ var (
 )
 
 // 新增 User
-func AddUser(up bean.UserProfile) (uid  int64, err  error){
+func AddUser(up bean.UserProfile) (uid int64, err error) {
 	o := orm.NewOrm()
 	o.Begin()
 	_, errs := o.Raw("insert into user set username = ?,password = ?,flag = ?", up.Username, up.Password, 0).Exec()
@@ -74,7 +74,7 @@ func UpdateUser(uid int, userProfile bean.UserProfile) error {
 }
 
 // 删除 user 信息，逻辑删除
-func DeleteUser(uid int) (err error){
+func DeleteUser(uid int) (err error) {
 	o := orm.NewOrm()
 	num, errs := o.Raw("update user set flag = 1 where id = ?", uid).Exec()
 	if errs == nil {
@@ -95,7 +95,7 @@ func Login(username, password string) (isOK bool, userProfile bean.UserProfile, 
 	errs := o.Raw("select * from user u inner join user_profile up on up.user_id = u.id where u.username = ? and u.password = ? and u.flag = 0",
 		username, password).QueryRow(&userProfile)
 	if errs == nil && userProfile.Id != 0 {
-		return true, userProfile,nil
+		return true, userProfile, nil
 	} else {
 		return false, userProfile, errors.New("Login fail.")
 	}

@@ -1,12 +1,12 @@
 package bean
 
 type UserProfile struct {
-	Id int
+	Id       int
 	Username string
 	Password string
-	Address string
-	Age int
-	Gender int
-	Email string
-	Flag int8
+	Address  string
+	Age      int
+	Gender   int
+	Email    string
+	Flag     int8
 }

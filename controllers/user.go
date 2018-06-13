@@ -1,10 +1,10 @@
 package controllers
 
 import (
-	"github.com/astaxie/beego"
-	"encoding/json"
 	"apiproject/bean"
 	"apiproject/models"
+	"encoding/json"
+	"github.com/astaxie/beego"
 )
 
 // 关于 User 相关接口操作
@@ -18,13 +18,13 @@ type UserController struct {
 // @Success 200 {int} bean.User.id
 // @Failure 403 body 不能为空
 // @router / [post]
-func (u *UserController) AddUser(){
+func (u *UserController) AddUser() {
 	var userProfile = bean.UserProfile{}
 	err := json.Unmarshal(u.Ctx.Input.RequestBody, &userProfile)
 	if err == nil {
 		uid, err := models.AddUser(userProfile)
 		if err == nil {
-			u.Data["json"] = bean.ResultVO{true, "Add user success", map[string]interface{}{"uid" : uid}}
+			u.Data["json"] = bean.ResultVO{true, "Add user success", map[string]interface{}{"uid": uid}}
 		} else {
 			u.Data["json"] = bean.ResultVO{false, err.Error(), ""}
 		}
@@ -53,7 +53,7 @@ func (u *UserController) GetAllUser() {
 func (u *UserController) GetUser() {
 	uid, err := u.GetInt(":uid")
 	if err == nil && uid != 0 {
-		user,err := models.GetUserById(uid)
+		user, err := models.GetUserById(uid)
 		if err == nil {
 			u.Data["json"] = bean.ResultVO{true, "", user}
 		} else {
@@ -74,7 +74,7 @@ func (u *UserController) GetUser() {
 // @router /:uid [put]
 func (u *UserController) UpdateUser() {
 	var userProfile = bean.UserProfile{}
-	uid,err := u.GetInt(":uid")
+	uid, err := u.GetInt(":uid")
 	if err == nil && uid != 0 {
 		err := json.Unmarshal(u.Ctx.Input.RequestBody, &userProfile)
 		if err == nil {
@@ -100,7 +100,7 @@ func (u *UserController) UpdateUser() {
 // @Failure	403	uid is not int
 // @router /:uid [delete]
 func (u *UserController) DeleteUser() {
-	uid,err := u.GetInt(":uid")
+	uid, err := u.GetInt(":uid")
 	if err == nil && uid != 0 {
 		err := models.DeleteUser(uid)
 		if err == nil {

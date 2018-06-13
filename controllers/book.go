@@ -75,7 +75,7 @@ func (b *BookController) UpdateBook() {
 		json.Unmarshal(b.Ctx.Input.RequestBody, &book)
 		err := models.UpdateBookById(bid, book)
 		if err == nil {
-			b.Data["json"] =  bean.ResultVO{true, "Update book success", book}
+			b.Data["json"] = bean.ResultVO{true, "Update book success", book}
 		} else {
 			b.Data["json"] = bean.ResultVO{false, err.Error(), ""}
 		}

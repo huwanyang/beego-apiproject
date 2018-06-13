@@ -61,7 +61,7 @@ func UpdateBookById(bid int, book bean.Book) error {
 // 删除 book
 func DeleteBookById(bid int) error {
 	o := orm.NewOrm()
-	_,err := o.Raw("delete from book where id = ?", bid).Exec()
+	_, err := o.Raw("delete from book where id = ?", bid).Exec()
 	if err == nil {
 		return nil
 	}

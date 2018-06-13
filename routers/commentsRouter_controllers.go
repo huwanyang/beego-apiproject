@@ -9,90 +9,90 @@ func init() {
 
 	beego.GlobalControllerRouter["apiproject/controllers:BookController"] = append(beego.GlobalControllerRouter["apiproject/controllers:BookController"],
 		beego.ControllerComments{
-			Method: "PostBook",
-			Router: `/`,
+			Method:           "PostBook",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"post"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:BookController"] = append(beego.GlobalControllerRouter["apiproject/controllers:BookController"],
 		beego.ControllerComments{
-			Method: "GetAllBook",
-			Router: `/`,
+			Method:           "GetAllBook",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"get"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:BookController"] = append(beego.GlobalControllerRouter["apiproject/controllers:BookController"],
 		beego.ControllerComments{
-			Method: "GetBook",
-			Router: `/:bid`,
+			Method:           "GetBook",
+			Router:           `/:bid`,
 			AllowHTTPMethods: []string{"get"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:BookController"] = append(beego.GlobalControllerRouter["apiproject/controllers:BookController"],
 		beego.ControllerComments{
-			Method: "UpdateBook",
-			Router: `/:bid`,
+			Method:           "UpdateBook",
+			Router:           `/:bid`,
 			AllowHTTPMethods: []string{"put"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:BookController"] = append(beego.GlobalControllerRouter["apiproject/controllers:BookController"],
 		beego.ControllerComments{
-			Method: "DeleteBook",
-			Router: `/:bid`,
+			Method:           "DeleteBook",
+			Router:           `/:bid`,
 			AllowHTTPMethods: []string{"delete"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "AddUser",
-			Router: `/`,
+			Method:           "AddUser",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"post"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "GetAllUser",
-			Router: `/`,
+			Method:           "GetAllUser",
+			Router:           `/`,
 			AllowHTTPMethods: []string{"get"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "GetUser",
-			Router: `/:uid`,
+			Method:           "GetUser",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"get"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "UpdateUser",
-			Router: `/:uid`,
+			Method:           "UpdateUser",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"put"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "DeleteUser",
-			Router: `/:uid`,
+			Method:           "DeleteUser",
+			Router:           `/:uid`,
 			AllowHTTPMethods: []string{"delete"},
-			MethodParams: param.Make(),
-			Params: nil})
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 	beego.GlobalControllerRouter["apiproject/controllers:UserController"] = append(beego.GlobalControllerRouter["apiproject/controllers:UserController"],
 		beego.ControllerComments{
-			Method: "Login",
-			Router: `/login`,
-			AllowHTTPMethods: []string{"get","post"},
-			MethodParams: param.Make(),
-			Params: nil})
+			Method:           "Login",
+			Router:           `/login`,
+			AllowHTTPMethods: []string{"get", "post"},
+			MethodParams:     param.Make(),
+			Params:           nil})
 
 }
