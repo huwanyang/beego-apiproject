@@ -1,0 +1,278 @@
+swagger: "2.0"
+info:
+  title: Beego Project API
+  description: 学习使用 beego 创建一个简单 apiproject 项目，提供 RESTFul API 接口完档，完成基础的 CRUD 操作。。
+  version: 1.0.0
+  contact:
+    email: huwanyang168@163.com
+basePath: /v1
+paths:
+  /book/:
+    get:
+      tags:
+      - book
+      description: 获取所有 Book 列表
+      operationId: BookController.Get all books
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.Book'
+    post:
+      tags:
+      - book
+      description: 创建一个新的 Book
+      operationId: BookController.Create Book
+      parameters:
+      - in: body
+        name: body
+        description: 针对 Book 的 Post 请求 Body
+        required: true
+        schema:
+          $ref: '#/definitions/bean.Book'
+      responses:
+        "200":
+          description: '{int} bean.Book.id'
+        "403":
+          description: Body 为空
+  /book/{bid}:
+    get:
+      tags:
+      - book
+      description: 根据 id 获取 Book
+      operationId: BookController.GetBook by Id
+      parameters:
+      - in: path
+        name: bid
+        description: 根据 path 的 id 获取 book 信息
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.Book'
+        "403":
+          description: bid is not int
+    put:
+      tags:
+      - book
+      description: 根据 id 更新 book
+      operationId: BookController.Update book by id
+      parameters:
+      - in: path
+        name: bid
+        description: 根据 Path 的 id 更新 Book 信息
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: body
+        description: 针对 Book 的 Put 请求 Body
+        required: true
+        schema:
+          $ref: '#/definitions/bean.Book'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.Book'
+        "403":
+          description: bid is not int
+    delete:
+      tags:
+      - book
+      description: 根据 id 删除 book
+      operationId: BookController.Delete book
+      parameters:
+      - in: path
+        name: bid
+        description: 根据 Path 的 id 删除 Book 信息
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: string delete success
+        "403":
+          description: bid is not int
+  /user/:
+    get:
+      tags:
+      - user
+      description: 获取所有的 User 列表
+      operationId: UserController.获取 User 列表
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.UserProfile'
+    post:
+      tags:
+      - user
+      description: 增加一个新的 User 操作
+      operationId: UserController.增加 User
+      parameters:
+      - in: body
+        name: body
+        description: 针对 User 的 Post 请求 Body
+        required: true
+        schema:
+          $ref: '#/definitions/bean.UserProfile'
+      responses:
+        "200":
+          description: '{int} bean.User.id'
+        "403":
+          description: body 不能为空
+  /user/{uid}:
+    get:
+      tags:
+      - user
+      description: 根据 uid 获取 User
+      operationId: UserController.获取 User
+      parameters:
+      - in: path
+        name: uid
+        description: 根据 path 的 uid 获取 user 信息
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.UserProfile'
+        "403":
+          description: uid is not int
+    put:
+      tags:
+      - user
+      description: 根据 uid 更新 User & Profile
+      operationId: UserController.更新 User
+      parameters:
+      - in: path
+        name: uid
+        description: 根据 path 的 uid 更新 user & profile 信息
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: body
+        description: 针对 User 的 Put 请求 Body
+        required: true
+        schema:
+          $ref: '#/definitions/bean.UserProfile'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/bean.UserProfile'
+        "403":
+          description: uid is not int
+    delete:
+      tags:
+      - user
+      description: 根据 uid 删除 User，逻辑删除
+      operationId: UserController.删除 User
+      parameters:
+      - in: path
+        name: uid
+        description: 根据 path 的 uid 删除 user 信息
+        required: true
+        type: integer
+        format: int64
+      responses:
+        "200":
+          description: '{string} delete user success'
+        "403":
+          description: uid is not int
+  /user/login:
+    get:
+      tags:
+      - user
+      description: 根据用户名和密码登录
+      operationId: UserController.登录
+      parameters:
+      - in: query
+        name: username
+        description: username 用户名
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: password 密码
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: parameter is empty
+    post:
+      tags:
+      - user
+      description: 根据用户名和密码登录
+      operationId: UserController.登录
+      parameters:
+      - in: query
+        name: username
+        description: username 用户名
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: password 密码
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} login success'
+        "403":
+          description: parameter is empty
+definitions:
+  bean.Book:
+    title: Book
+    type: object
+    properties:
+      Description:
+        type: string
+      Id:
+        type: integer
+        format: int64
+      Name:
+        type: string
+      Price:
+        type: number
+        format: double
+  bean.UserProfile:
+    title: UserProfile
+    type: object
+    properties:
+      Address:
+        type: string
+      Age:
+        type: integer
+        format: int64
+      Email:
+        type: string
+      Flag:
+        type: integer
+        format: int32
+      Gender:
+        type: integer
+        format: int64
+      Id:
+        type: integer
+        format: int64
+      Password:
+        type: string
+      Username:
+        type: string
+tags:
+- name: user
+  description: |
+    关于 User 相关接口操作
+- name: book
+  description: |
+    关于 Book 相关接口操作
