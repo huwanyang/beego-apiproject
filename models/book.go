@@ -44,7 +44,7 @@ func GetBookById(bid int) (b bean.Book, err error) {
 	if errs == nil {
 		return book, nil
 	}
-	return b, errors.New("Book not exists")
+	return b, errors.New("Book not exists.")
 }
 
 // 更新 book
@@ -55,7 +55,7 @@ func UpdateBookById(bid int, book bean.Book) error {
 	if err == nil {
 		return nil
 	}
-	return errors.New("Update book fail")
+	return errors.New("Update book fail.")
 }
 
 // 删除 book
@@ -65,5 +65,5 @@ func DeleteBookById(bid int) error {
 	if err == nil {
 		return nil
 	}
-	return errors.New("Delete book fail")
+	return errors.New("Delete book fail.")
 }

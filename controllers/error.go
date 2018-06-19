@@ -5,6 +5,7 @@ import (
 	"github.com/astaxie/beego"
 )
 
+// 自定义 Error 错误处理
 type ErrorController struct {
 	beego.Controller
 }
